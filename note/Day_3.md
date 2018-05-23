@@ -57,21 +57,21 @@ LOCAL_APPS = [
 
 # 1-13 Parts of Django App- Models and Views
 
-##Models
+## Models
 - 데이터의 모습/모양 / 데이터의 내용, 필드, 무슨 데이터 등등을 알아야함
 Ex) 쇼핑몰 - products app(id,상품, 사진, 가격등), user app(id, email, 신용카드, 주소 등등) 필요해 따른 데이터 구성을 말 한다.
 
-##URLS
+## URLS
 - 장고는 한개의. URL파일을 갖고 있다. Products, user, payment 등의 app을 위한 url 파일을 만들고 config/Urls.py에서 불러준다.
 * url은 장고로 하여금 뭔가를 실행하게 한다
 * 프로토콜이라서 이를 사용해서 앱을 실행시킨다
 * HTTP 부르는것
 * 모든 앱을 위한 URL들을 합친 한개의 파일만 존재한다.
 
-##Views
+## Views
 * 장고가 무엇을 해야할지 알려준다
 * URL이 있어야 작동한다(로그인을 요청 할 시 이와 매칭 되는 URL이 있어야 view를 실행할 수 있다)
-*그냥 python function일 뿐이다
+* 그냥 python function일 뿐이다
 
 
 # 1-14 What is the Django ORM
@@ -93,7 +93,7 @@ SELECT * FROM users WHERE country=‘Colombia’ ORDER BY created_date
 이 수업은 파이썬, 자바스크립트를 사용하기에 SQL까지 배우는건 무리
 하지만 장고는 이를 해결해줄 수 있다.
 
-*장고 ORM은 파이썬과 SQL 사이의 통역 역할을 한다.
+* 장고 ORM은 파이썬과 SQL 사이의 통역 역할을 한다.
 
 이를 Django_Orm으로 정리하면 이렇게 된다
 User.objects.filter(country=“Colombia”).order_by(‘created_date’)
@@ -108,12 +108,12 @@ User.objects.filter(country=“Colombia”).order_by(‘created_date’)
 - 장고 모델은 파이썬 클래스이다
 - 모델은 데이터의 모습을 설명해 준다
 - 장고 모델은 ORM을 이용해서 데이타베이스 테이블을 만들어준다.
-##fields
+## fields
 - 필드는 장고 그리고 데이터베이스에게 데이터의 이름과 종류를 알려줘
 - 텍스트, 숫자 이메일 , 파일 등등
 - 데이터의 종류를 설명하기 위해 존재한다
 - 잘못된 정보를 저장했을 때 알려 주기도 한다(정보의 타입이 다른것이 들어올 경우)
-**장고 모델에 관련한 메소드들을 확인하고 사용해보자 (filter,get등등)
+* *장고 모델에 관련한 메소드들을 확인하고 사용해보자 (filter,get등등)
 
 # 1-17 Migrating
 -  모델의 모양을 바꾸기 위한 데이터베이스 프로세스 이다.
@@ -121,21 +121,21 @@ User.objects.filter(country=“Colombia”).order_by(‘created_date’)
 - 모델 필드의 내용을 업데이트 할 경우 마이그레이션이 필요하다
 * 마이그레이션 커맨드
 Python manage.py runserver를 종료한뒤
-$python manage.py migrate
+`$python manage.py migrate`
 
-**$python manage.py makemigrations
+* `$python manage.py makemigrations`
 이 커맨드는 모델의 변경 사항을 설명하는 .py 파일을 만든다(migrations폴더에서 확인가능)
 
 
 # 1-18 Creating a super user
 - 장고 어드민 패널을 이용하기 위해 super user를 생성해야한다
-*장고 어드민 패널 접속 방법
+* 장고 어드민 패널 접속 방법
 - 서버를 작동 시킨 뒤
 - 크롬에 http://localhost:8000/admin 입력
 
-*super user 생성 커맨드
-$python manage.py createsuperuser
-super user 생성 후 서버를 다시 켜고 어드민 페이지를 다시 불러 ㄴ와서 로그인 하자
+* super user 생성 커맨드
+`$python manage.py createsuperuser`
+super user 생성 후 서버를 다시 켜고 어드민 페이지를 다시 불러와서 로그인 하자
 
 
 
