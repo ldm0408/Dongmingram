@@ -39,14 +39,18 @@ Django apps, third-party apps, local apps 가 존재 한다.
 * third-party apps: 우리가 빌드한게 아니고 디폴트 값도 아닌 인터넷에서 찾아서 설치한 앱이다
 * local apps: 우리가 생성한 앱이다(좀 전에 생성한 images)
  - 설치 방법 : images/apps.py를 열어 name에 프로젝트 이름 삽입
-```class ImagesConfig(AppConfig):
-    name = 'dongmingram.images```
+```
+class ImagesConfig(AppConfig):
+    name = 'dongmingram.images
+```
 Config/settings/base.py 의 local_apps 하단에 해당 앱을 추가
-```LOCAL_APPS = [
+```
+LOCAL_APPS = [
     'dongmingram.users.apps.UsersConfig',
     # Your stuff: custom apps go here
     'dongmingram.images.apps.ImagesConfig'
-]```
+]
+```
 
 * dongmingram/templets은 필요없어서 지웠다
 
