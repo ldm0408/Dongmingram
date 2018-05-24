@@ -1,7 +1,7 @@
 # 1-19 Creating the User Model
 - models를 통해 장고는 varible을 데이터베이스 테이블로 변환시킨다
-- 자동으로 유저, 이미지를 위한 테이블을 생성 한다는 의미
-- 장고는 우리의 variables로 DB에 column을 자동 생성할거다
+- 이 프로젝트를 예로 들면 자동으로 유저, 이미지를 위한 테이블을 생성 한다는 의미
+- 장고는 우리가 생성한 model에 variables로 DB에 column을 자동 생성할거다
 - 장고가 DB를 작업해준다.
 
 * 테이블은 데이터 전체의 모습을 말한다 ex) 엑셀 시트
@@ -19,7 +19,7 @@ class User(AbstractUser):
 ```
 Name 변수 하단에 원하는 변수를 추가한다.
 
-인스타그램에 프로필에 필요한 website, bio, phone, gender 필드를 추가해보자
+인스타그램 프로필에 필요한 website, bio, phone, gender 필드를 추가해보자
 ```
 class User(AbstractUser):
 
@@ -53,8 +53,8 @@ $ python manage.py migrate
 ## time stamp
  - 언제 모델이 생성되었는지
  - 언제 모델이 업데이트 되었는지
-댓글이나 좋아요등에 각각 생성날짜와 업데이트 날짜의 변수를 줄 수 있지만 효율적이지 않다
-그래서 abstract model을 만들어서 다른 모델들을 위한 base로 사용 한다
+댓글이나 좋아요등에 각각 생성날짜와 업데이트 날짜의 변수를 줄 수 있지만 효율적이지 않다.
+그래서 abstract model을 만들어서 다른 모델들을 위한 base로 사용 한다.
 여기선 abstract time stamp model을 만들어 사용할 예정이다.
 `/images/models.py` 를 열어 아래와 같이 수정한다.
 ```
@@ -74,6 +74,7 @@ class TimeStampedModel(models.Model):
 * abstract 베이스 클래스는 데이터베이스와 연결 되지않는다. 단지 다른 모델들을 위한 베이스로 사용된다.
 ## image model fields 추가
 - 이미지와 관련된 모델들을 생성해주자
+- 각각에 TimeStampedmodel을 상속하자
 -  먼저, 이미지와 커멘트 모델을 생성 했다.
 ```
 class Image(TimeStampedModel):
