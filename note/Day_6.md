@@ -75,6 +75,7 @@ $pipenv install djangorestframework
 
 설치 후 `/config/base.py`의 THIRD_PARTY_APPS에 추가해주자
 ```
+```
 THIRD_PARTY_APPS = [
     'allauth',
     'allauth.account',
