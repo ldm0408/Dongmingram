@@ -13,7 +13,7 @@
 4.  delete a resource => DELETE
 ### request 구성
 1. Header
-2. Body (post, put만 있다)
+2. Body
 * response도 이 두가지로 구성되어있다.
 
 ## django가 request를 보내려면?
@@ -62,3 +62,35 @@ GET -> /owners/dongmin/dogs/search?color=brown dongmin이 보유한 갈생 강�
  기존 api에 새로운 내용을 덮어쓰지말고 새로운 버전을 만들어 사용하는게 좋다
 
 * api는 명확하고, 이해하기 쉽고, 보자마자 이해할 수 있게 만들어야한다.
+
+
+# 1-29 Django Rest Framework Installation and Basic Concepts
+## Django Rest Framework
+- 장고 api를 만들기 위해 최적화 되어있다. 
+- 여러 종류의 class, function, 파이썬 패키지를 갖고 있고 이는 api 제작에 유용하다
+* 설치 방법
+```
+Pipenv 환경에서
+$pipenv install djangorestframework
+
+설치 후 `/config/base.py`의 THIRD_PARTY_APPS에 추가해주자
+```
+THIRD_PARTY_APPS = [
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
+    'rest_framework',
+]
+```
+## 시리얼라이저(serializers)
+- api는 json과 소통을 한다. 프런트엔드에서도 json을 요구할거다
+- json은 JavaScript Object Notatatioon
+- 장고는 파이썬과 소통하지 자바스크립트인 json과 소통하지 않는다
+- rest framework의 시리얼라이즈를 통해 파이썬 오브젝트를 joon 오브젝트로 변환시켜준다(또한 json을 파이썬 오브젝트로 변환 시켜준다)
+- 한 마디로 파이썬과 json을 연결해주는 다리이다.
+```
+Python -> Serializers -> Json
+ Json -> Serializers -> Python
+```
+
+
