@@ -92,5 +92,3 @@ THIRD_PARTY_APPS = [
 Python -> Serializers -> Json
  Json -> Serializers -> Python
 ```
-
-
