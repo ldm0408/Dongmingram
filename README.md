@@ -20,3 +20,4 @@ Cloning Instagram with Python and React / React Native
 3. [Django Day-3](./note/Day_3.md) : 데이터베이스,app 생성, models & views, Django-ORM, Models & Fields, Migrating, Django-admin 패널, super user 생성
 4. [Django Day-4](./note/Day_4.md) : Users models 수정, images models 생성, abstract 베이스 클래스
 5. [Django Day-5](./note/Day_5.md) : Model Relationship(one to many, many to one, many to many), admin 패널 등록(이미지 테이블 등록함), admin 패널 커스터마이징(데이터르 더욱 직관적으로 확인 할 수 있게 커스터마이징), many to many test(follow, following을 통해서)
+6. [Django Day-6](./note/Day_6.md) : HTTP에 대하여, REST API concepts, rest framework 설치 및 시리얼라이저 간략 설명
