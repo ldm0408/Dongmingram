@@ -29,6 +29,10 @@ ForeignKey()는 지정한 column에 해당 데이터와 연결된 모델의 ID�
 - 팔로우 팔로잉 추가는 add()메소드를 이용해서 가능하다
   * ex) Dongmin.followers.add(jisu, Pedro)
   * 이경우 nicolas의 followers 필드에 jisu와 pedro의 ID값이 저장 된다.
+### *참고사항
+만약 큰 스케일의 장고 앱을 이용해야 한다고 하면 many to many는 부적합하다고 한다.
+팔로우를 예로 들어 수천명의 팔로우를 가능하게 한다면 mant to many는 매우 느리게 작동하게 될 거라고 하니 참고하자.
+
 
 
 # 1-24 Registering the Models in the admin
