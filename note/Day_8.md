@@ -102,7 +102,7 @@ class ImageSerializer(serializers.ModelSerializer):
             'like_set’
         )
 ```
-* 위를 보면 fields 의 값을 기존읜 ‘__all__’에서 직접적으로 필드를 기입해주는 방법을 사용했다.
+* 위를 보면 fields 의 값을 기존의 `'__all__'`에서 직접적으로 필드를 기입해주는 방법을 사용했다.
  이렇게 직접적으로 불러와야만 _set 필드를 사용 가능하다
 
 * comment	_set 과 like_set 에 해당 시리얼라이저 클래스를 지정해줘야 한다.
