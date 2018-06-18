@@ -6,7 +6,7 @@ urlpatterns = [
     path(
         "",
         view = views.Feed.as_view(),
-        name = 'all_images'
+        name = 'Feed'
     ),
     
 ]

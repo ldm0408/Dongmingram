@@ -22,6 +22,9 @@ class Image(TimeStampedModel):
     def __str__(self):
         return '{} - {}'.format(self.location, self.caption)
 
+    class Meta:
+        ordering = ['-created_at']
+
 class Comment(TimeStampedModel):
 
     ''' Comment Model '''
