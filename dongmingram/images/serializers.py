@@ -15,7 +15,7 @@ class FeedUserSerializer(serializers.ModelSerializer):
 class CommentSerializer(serializers.ModelSerializer):
 
     creator = FeedUserSerializer()
-    
+
     class Meta:
         model = models.Comment
         fields = (

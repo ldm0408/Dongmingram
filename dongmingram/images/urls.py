@@ -8,5 +8,10 @@ urlpatterns = [
         view = views.Feed.as_view(),
         name = 'Feed'
     ),
+    path(
+        "<int:image_id>/like",
+        view = views.LikeImage.as_view(),
+        name = 'LikeImage'
+    )
     
 ]
