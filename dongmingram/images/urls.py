@@ -12,6 +12,6 @@ urlpatterns = [
         "<int:image_id>/like",
         view = views.LikeImage.as_view(),
         name = 'LikeImage'
-    )
+    ) 
     
 ]
