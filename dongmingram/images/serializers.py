@@ -2,6 +2,17 @@ from rest_framework import serializers
 from . import models
 from dongmingram.users import models as user_models
 
+class UserProfileImageSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = models.Image
+        fields = (
+            "id",
+            "file",
+            "like_counter",
+            "comment_counter"
+        )
+
 
 class FeedUserSerializer(serializers.ModelSerializer):
 
@@ -48,5 +59,6 @@ class ImageSerializer(serializers.ModelSerializer):
             'caption',
             'comments',
             'like_counter',
+            'comment_counter',
             'creator'
         )

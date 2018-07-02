@@ -23,6 +23,9 @@ class Image(TimeStampedModel):
     def like_counter(self):
         return self.likes.all().count()
 
+    def comment_counter(self):
+        return self.comments.all().count()
+
     def __str__(self):
         return '{} - {}'.format(self.location, self.caption)
 

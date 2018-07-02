@@ -13,3 +13,52 @@ class ExploreUser(APIView):
         serializer = serializers.ExploreUserSerializer(last_five, many = True)
 
         return Response(data = serializer.data, status = status.HTTP_200_OK)
+
+
+class FollowUser(APIView):
+
+    def post (self, request, user_id, format = None):
+        
+        user = request.user
+
+        try:
+            user_to_follow = models.User.objects.get(id = user_id)
+        except model.User.DoesnotExist:
+            return Response(status = status.HTTP_404_NOT_FOUND)
+        
+        user.followers.add(user_to_follow)
+        user.save()
+
+        return Response(status = status.HTTP_200_OK)
+
+
+class UnFollowUser(APIView):
+
+    def post(self, request, user_id, format=None):
+
+        user = request.user
+
+        try:
+            user_to_follow = models.User.objects.get(id=user_id)
+        except model.User.DoesnotExist:
+            return Response(status=status.HTTP_404_NOT_FOUND)
+
+        user.followers.remove(user_to_follow)
+        user.save()
+
+        return Response(status=status.HTTP_200_OK)
+
+
+class UserProfile(APIView):
+
+    def get(self, request, username, format = None):
+
+        try:
+            found_user = models.User.objects.get(username = username)
+
+        except models.User.DoesnotExist:
+            return Response(status = status.HTTP_404_NOT_FOUND)
+
+        serializer = serializers.UserProfileSerializer(found_user)
+
+        return Response(data = serializer.data, status = status.HTTP_200_OK)
