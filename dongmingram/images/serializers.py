@@ -48,7 +48,6 @@ class LikeSerializer(serializers.ModelSerializer):
 class ImageSerializer(serializers.ModelSerializer):
 
     comments = CommentSerializer(many = True)
-    # likes = LikeSerializer(many = True)
     creator = FeedUserSerializer()
 
     class Meta:
