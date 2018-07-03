@@ -27,6 +27,11 @@ urlpatterns = [
         "comments/<int:comment_id>",
         view = views.Comment.as_view(),
         name = 'Comment'
-    )
+    ),
+    path(
+        "search/",
+        view=views.Search.as_view(),
+        name="search"
+    ),
     
 ]

@@ -63,10 +63,11 @@ DJANGO_APPS = [
     'django.contrib.admin',
 ]
 THIRD_PARTY_APPS = [
-    'allauth',
-    'allauth.account',
-    'allauth.socialaccount',
+    'allauth', # registation
+    'allauth.account', # registration
+    'allauth.socialaccount', # registration
     'rest_framework', #REST framework
+    'taggit', # Tags for the photos
 ]
 LOCAL_APPS = [
     'dongmingram.users.apps.UsersConfig',
@@ -238,3 +239,4 @@ SOCIALACCOUNT_ADAPTER = 'dongmingram.users.adapters.SocialAccountAdapter'
 
 # Your stuff...
 # ------------------------------------------------------------------------------
+TAGGIT_CASE_INSENSITIVE = True

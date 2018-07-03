@@ -33,5 +33,5 @@ urlpatterns = [
         "<str:username>/following",
         view=views.UserFollowing.as_view(),
         name="user_following"
-    )
+    ),
 ]

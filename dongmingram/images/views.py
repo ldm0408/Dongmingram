@@ -98,7 +98,6 @@ class CommentOnImage(APIView):
             return Response(status = status.HTTP_204_NO_CONTENT)
 
         serializer = serializers.CommentSerializer(data = request.data)
-
         if serializer.is_valid():
 
             serializer.save(
@@ -119,5 +118,21 @@ class Comment(APIView):
         except models.Comment.DoesNotExist:
             return Response(status = status.HTTP_404_NOT_FOUND)
 
-        
 
+class Search(APIView):
+    
+    def get(self, request, format = None):
+        hashtags = request.query_params.get('hashtags',None)
+        
+        if hashtags is not None:
+           
+            hashtags = hashtags.split(",")
+
+            images = models.Image.objects.filter(tags__name__in=hashtags).distinct()
+
+            serializer = serializers.CountImageSerializer(images, many=True)
+
+            return Response(data=serializer.data, status=status.HTTP_200_OK)
+
+        else:
+            return Response(status = status.HTTP_400_BAD_REQUEST)
