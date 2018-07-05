@@ -68,6 +68,7 @@ THIRD_PARTY_APPS = [
     'allauth.socialaccount', # registration
     'rest_framework', #REST framework
     'taggit', # Tags for the photos
+    'taggit_serializer'
 ]
 LOCAL_APPS = [
     'dongmingram.users.apps.UsersConfig',

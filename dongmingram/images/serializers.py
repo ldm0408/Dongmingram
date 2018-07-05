@@ -1,4 +1,5 @@
 from rest_framework import serializers
+from taggit_serializer.serializers import TagListSerializerField, TaggitSerializer
 from . import models
 from dongmingram.users import models as user_models
 
@@ -49,6 +50,7 @@ class ImageSerializer(serializers.ModelSerializer):
 
     comments = CommentSerializer(many = True)
     creator = FeedUserSerializer()
+    tags = TagListSerializerField()
 
     class Meta:
         model = models.Image
@@ -60,5 +62,6 @@ class ImageSerializer(serializers.ModelSerializer):
             'comments',
             'like_counter',
             'comment_counter',
-            'creator'
+            'creator',
+            'tags'
         )
