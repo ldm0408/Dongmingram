@@ -265,5 +265,5 @@ hashtags = request.query_params.get('hashtags',None)
 hashtags = hashtags.split(",")
 ```
 
-* Deep Relationship
+* [Deep Relationship](https://docs.djangoproject.com/en/1.11/topics/db/queries/#field-lookups) - 각각의 옵션에 대해 읽어보자~!!!*
 * .distinct() = 명확한 검색, 중복 방지
