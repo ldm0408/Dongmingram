@@ -165,7 +165,7 @@ class ModerateComments(APIView):
 class ImageDetail(APIView):
 
     def get(self, request, image_id, format = None):
-
+        user =request.user
         try:
             image = models.Image.objects.get(id = image_id)
 
