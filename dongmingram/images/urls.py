@@ -24,9 +24,14 @@ urlpatterns = [
         name = 'CommentOnImage'
     ),
     path(
+        "<int:image_id>/comments/<int:comment_id>",
+        view=views.ModerateComments.as_view(),
+        name='ModerateComment'
+    ),
+    path(
         "comments/<int:comment_id>",
         view = views.Comment.as_view(),
-        name = 'Comment'
+        name = 'DeleteComment'
     ),
     path(
         "search/",
