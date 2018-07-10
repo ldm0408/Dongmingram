@@ -107,7 +107,7 @@ class CommentOnImage(APIView):
                 creator = user,
                 image = found_image)
             notifications_view.Notification(user, found_image.creator, 'comment', found_image, serializer.data['message'])
-
+            print(serializer.data, type(serializer.data))
             return Response(data = serializer.data, status = status.HTTP_201_CREATED)
 
 
