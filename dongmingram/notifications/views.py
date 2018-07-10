@@ -19,11 +19,13 @@ class Notifications(APIView):
 
 def Notification(creator, to, notification_type, image=None,comment=None ):
 
-    notifications = models.Notification.objects.create(
+    notification = models.Notification.objects.create(
         creator = creator,
         to = to,
         notification_type=notification_type,
         comment = comment,
         image = image,
     )
+
+    notification.save()
 
