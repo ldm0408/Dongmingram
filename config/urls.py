@@ -15,12 +15,10 @@ urlpatterns = [
     # Django Admin, use {% url 'admin:index' %}
     path(settings.ADMIN_URL, admin.site.urls),
     # User management
-    path(
-        "users/",
-        include("dongmingram.users.urls", namespace="users"),
-    ),
+    path("users/",include("dongmingram.users.urls", namespace="users")),
     path("accounts/", include("allauth.urls")),
     path("images/", include("dongmingram.images.urls", namespace= "images")),
+    path("notifications/", include("dongmingram.notifications.urls", namespace= "notifications")),
     # Your stuff: custom urls includes go here
 ] + static(
     settings.MEDIA_URL, document_root=settings.MEDIA_ROOT

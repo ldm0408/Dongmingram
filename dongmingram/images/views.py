@@ -2,6 +2,8 @@ from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
 from . import models, serializers
+from dongmingram.notifications import views as notifications_view
+
 
 class Feed(APIView):
 
@@ -56,6 +58,7 @@ class LikeImage(APIView):
                 image = found_image
             )
             new_like.save()
+            notifications_view.Notification(user, found_image.creator, 'like',found_image)
 
             return Response(status = status.HTTP_201_CREATED)
 
@@ -103,6 +106,7 @@ class CommentOnImage(APIView):
             serializer.save(
                 creator = user,
                 image = found_image)
+            notifications_view.Notification(user, found_image.creator, 'comment', found_image, serializer.data['message'])
 
             return Response(data = serializer.data, status = status.HTTP_201_CREATED)
 

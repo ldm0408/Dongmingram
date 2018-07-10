@@ -2,6 +2,7 @@ from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
 from . import models, serializers
+from dongmingram.notifications import views as notifications_view
 
 
 class ExploreUser(APIView):
@@ -28,7 +29,7 @@ class FollowUser(APIView):
         
         user.followers.add(user_to_follow)
         user.save()
-
+        notifications_view.Notification(user,user_to_follow,'follow')
         return Response(status = status.HTTP_200_OK)
 
 

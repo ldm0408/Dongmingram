@@ -1,9 +1,16 @@
 from rest_framework import serializers
-from taggit_serializer.serializers import TagListSerializerField, TaggitSerializer
 from . import models
+from taggit_serializer.serializers import TagListSerializerField, TaggitSerializer
 from dongmingram.users import models as user_models
 
 
+class SmallImageSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = models.Image
+        fields = (
+            'file',
+        )
 class CountImageSerializer(serializers.ModelSerializer):
 
     class Meta:
