@@ -178,7 +178,7 @@ class ModerateComments(APIView):
 
 class ImageDetail(APIView):
 
-    def found_own_image(self, image_id, user):
+    def found_own_image(self, image_id, user): ## 자주 쓰이는 코드는 함수화 시켜서 사용하자
         try:
             image = models.Image.objects.get(id = image_id, creator = user)
             return image
