@@ -24,3 +24,4 @@ Cloning Instagram with Python and React / React Native
 7. [Django Day-7](./note/Day_7.md) : images 시리얼라이저 생성, images api views 생성, images urls 생성 및 테스트
 8. [Django Day-8](./note/Day_8.md) : Forign Key 필드 시리얼라이징, _set 필드 이용한 시리얼라이징, related_name 이용하기, API View 계획(트렐로)
 9. [Django Day-9](./note/Day_9.md) : 유저 피드 view, url 변수 사용, Like/ Unlike views, comment views, delete comments view, user Explore view, user profile view, followers and following List views, searching by hashtags view
+10. [Django Day-10](./note/Day_10.md) : username 검색, 알림 app 생성, like, follow, following 알림 view생성, 내 사진에 달린 댓글 삭제 기능, 사진에 좋아요한 유저 리스트, 사진 수정, 프로필 업데이트, 비밀번호 업데이트
