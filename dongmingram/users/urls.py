@@ -39,4 +39,9 @@ urlpatterns = [
         view=views.UserProfile.as_view(),
         name="userProfile"
     ),
+    path(
+        "<str:username>/password",
+        view=views.ChangePassword.as_view(),
+        name="change_password"
+    )
 ]
