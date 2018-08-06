@@ -66,6 +66,7 @@ THIRD_PARTY_APPS = [
     'allauth', # registation
     'allauth.account', # registration
     'allauth.socialaccount', # registration
+    'allauth.socialaccount.providers.facebook',
     'rest_framework', #REST framework
     'rest_framework.authtoken',
     'taggit', # Tags for the photos
@@ -99,8 +100,6 @@ AUTHENTICATION_BACKENDS = [
 ]
 # https://docs.djangoproject.com/en/dev/ref/settings/#auth-user-model
 AUTH_USER_MODEL = 'users.User'
-# https://docs.djangoproject.com/en/dev/ref/settings/#login-redirect-url
-
 
 # PASSWORDS
 # ------------------------------------------------------------------------------
@@ -256,4 +255,4 @@ REST_FRAMEWORK = {
 
 REST_USE_JWT = True
 
-ACCOUNT_LOGOUT_ON_GET = True
+ACCOUNT_LOGOUT_ON_GET = True ## Get 으로 로그아웃을 사용하기 위한 코드
