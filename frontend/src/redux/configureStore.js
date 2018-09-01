@@ -1,10 +1,13 @@
-import { createStore, combineReducers, applyMiddleware } from "redux";
-import thunk from "redux-thunk";
+import { createStore, combineReducers, compose, applyMiddleware } from "redux";
+import thunk from "redux-thunk"; //리액트앱과 스토어 사이를 연결해준다,리덕스 스토어로 액션을 보낼수있다
+import { connectRouter, routerMiddleware } from "connected-react-router";
+import createHistory from "history/createBrowserHistory"; // 해쉬 히스토리도 있고, 히스토리의 종류 다양한듯
 import users from "redux/modules/users";
 
 const env = process.env.NODE_ENV;
+const history = createHistory();
 
-const middlewares = [thunk];
+const middlewares = [thunk, routerMiddleware(history)];
 
 if (env === "development") {
   const { logger } = require("redux-logger");
@@ -17,6 +20,11 @@ const reducer = combineReducers({
 }); // 하나의 app에 여러 reducer 를 사용할 때 필요하다.
 
 let store = initialState =>
-  createStore(reducer, applyMiddleware(...middlewares));
+  createStore(
+    connectRouter(history)(reducer),
+    compose(applyMiddleware(...middlewares))
+  );
+
+export { history };
 
 export default store();
