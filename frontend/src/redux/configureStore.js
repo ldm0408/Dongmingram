@@ -1,8 +1,10 @@
 import { createStore, combineReducers, compose, applyMiddleware } from "redux";
 import { connectRouter, routerMiddleware } from "connected-react-router";
 import createHistory from "history/createBrowserHistory"; // 해쉬 히스토리도 있고, 히스토리의 종류 다양한듯
-import Reactotron from "ReactotronConfig";
 import thunk from "redux-thunk"; //리액트앱과 스토어 사이를 연결해준다,리덕스 스토어로 액션을 보낼수있다
+import { composeWithDevTools } from "redux-devtools-extension"; //dev tool
+import Reactotron from "ReactotronConfig"; // dev tool
+import { i18nState } from "redux-i18n"; // 언어 설정, 개발중인 App과 redux store의 현재 언어를 연결
 import users from "redux/modules/users";
 
 const env = process.env.NODE_ENV;
@@ -17,16 +19,17 @@ if (env === "development") {
 // 이 app 에선 'development' 환경에서만 사용되게 설정 했다. 배포 하면 쓸모없는 기능이기에..
 
 const reducer = combineReducers({
-  users
+  users,
+  i18nState
 }); // 하나의 app에 여러 reducer 를 사용할 때 필요하다.
 
 let store;
 
-if (env === "deveopment") {
+if (env === "development") {
   store = initialState =>
     Reactotron.createStore(
       connectRouter(history)(reducer),
-      compose(applyMiddleware(...middlewares))
+      composeWithDevTools(applyMiddleware(...middlewares))
     );
 } else {
   store = initialState =>
