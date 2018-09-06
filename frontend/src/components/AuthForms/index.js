@@ -3,41 +3,62 @@ import Ionicon from "react-ionicons";
 import styles from "./styles.scss";
 
 export const LoginForm = props => (
-  <div>
-    <form>
-      <input type="text" placeholder="Username" />
-      <input type="password" placeholder="Password" />
-      <input type="submit" placeholder="Log In" />
+  <div className={styles.formComponent}>
+    <form className={styles.form}>
+      <input className={styles.textInput} type="text" placeholder="Username" />
+      <input
+        className={styles.textInput}
+        type="password"
+        placeholder="Password"
+      />
+      <input
+        className={styles.button}
+        value="Log In"
+        type="submit"
+        placeholder="Log In"
+      />
     </form>
-    <span>or</span>
-    <span>
+    <span className={styles.divider}>or</span>
+    <span className={styles.facebookLink}>
       <Ionicon icon="logo-facebook" fontSize="20px" color="#385185" />
       Log in with Facebook
     </span>
-    <span>Forgot Password?</span>
+    <span className={styles.forgotLink}>Forgot Password?</span>
   </div>
 );
 
 export const SignupForm = props => (
-  <div>
-    <h3>Sign up to see photos and videos from your friends</h3>
-    <button>
+  <div className={styles.formComponent}>
+    <h3 className={styles.signupHeader}>
+      Sign up to see photos and videos from your friends
+    </h3>
+    <button className={styles.button}>
       {" "}
       <Ionicon icon="logo-facebook" fontSize="20px" color="white" />
       Log in with Facebook
     </button>
-    <span>or</span>
-    <form>
-      <input type="email" placeholder="Email" />
-      <input type="text" placeholder="Full Name" />
-      <input type="username" placeholder="Username" />
-      <input type="password" placeholder="Password" />
-      <input type="submit" placeholder="Sign Up" />
+    <span className={styles.divider}>or</span>
+    <form className={styles.form}>
+      <input className={styles.textInput} type="email" placeholder="Email" />
+      <input className={styles.textInput} type="text" placeholder="Full Name" />
+      <input
+        className={styles.textInput}
+        type="username"
+        placeholder="Username"
+      />
+      <input
+        className={styles.textInput}
+        type="password"
+        placeholder="Password"
+      />
+      <input
+        className={styles.button}
+        value="Sign Up"
+        type="submit"
+        placeholder="Sign Up"
+      />
     </form>
-    <span>or</span>
-    <span>Log in with Facebook</span>
-    <span>Forgot Password?</span>
-    <p>
+    <p className={styles.terms}>
       By signing up, you agree to our <span>Terms & PrivacyPolicy</span>
     </p>
   </div>
