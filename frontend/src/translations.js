@@ -1,6 +1,37 @@
 export const translations = {
-  ko: {
-    "Log In": "로그인",
-    "About Us": "인스트그램에 대하여"
-  }
-};
+  'ko': {
+    'Checkout our App': '우리의 어플리케이션을 이용해보세요',
+    'Don\'t have an account?': '계정이 없으신가요?',
+    'Sign up': '가입하기',
+    'Have an account?': '계정이 있으신가요?',
+    'Log in': '로그인 하기',
+    'Get the App': '앱을 다운로드 하세요',
+    'Download it on the Appel App Store': '애플 앱스토어에서 다운로드 하기',
+    'Download it on the Android App Store': '안드로이드 앱스토어에서 다운로드 하기',
+    'Username': '사용자 이름',
+    'Password': '비밀번호',
+    'Log In': '로그인',
+    'or': '또는',
+    'Log in with Facebook': 'Facebook으로 로그인 하기',
+    'Forgot Password?': '비밀번호를 잊으셨나요?',
+    'Sign up to see photos and videos from your friends': '친구들의 사진과 동영상을 보려면 가입하세요.',
+    'Email': '이메일',
+    'Full Name': '성명',
+    'Sign Up': '가입하기',
+    'By signing up, you agree to our': '회원가입을 하면 당신은 우리의',
+    'Terms & PrivacyPolicy': '약관 및 개인정보 정책에 동의 하게 됩니다',
+    'About Us': '인스타그램 정보',
+    'Support': '지원',
+    'Blog': '블로그',
+    'Press': '홍보 센터',
+    'Api': '',
+    'Jobs': '채용 정보',
+    'Privacy': '개인정보처리방침',
+    'Terms': '약관',
+    'Directory': '디렉터리',
+    'Language': '언어',
+    'DONGMINGRAM': '',
+  },
+  'options': {
+  },
+}

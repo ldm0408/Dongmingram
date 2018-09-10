@@ -18,9 +18,8 @@ export const LoginForm = (props, context) => (
       />
       <input
         className={styles.button}
-        value="Log In"
+        value={context.t("Log In")}
         type="submit"
-        placeholder={context.t("Log In")}
       />
     </form>
     <span className={styles.divider}>{context.t("or")}</span>
@@ -38,9 +37,9 @@ LoginForm.contextTypes = {
 
 export const SignupForm = (props, context) => (
   <div className={styles.formComponent}>
-    <h3 className={styles.signupHeader}>
+    <h2 className={styles.signupHeader}>
       {context.t("Sign up to see photos and videos from your friends")}
-    </h3>
+    </h2>
     <button className={styles.button}>
       {" "}
       <Ionicon icon="logo-facebook" fontSize="20px" color="white" />
@@ -70,9 +69,8 @@ export const SignupForm = (props, context) => (
       />
       <input
         className={styles.button}
-        value="Sign Up"
+        value={context.t("Sign Up")}
         type="submit"
-        placeholder={context.t("Sign Up")}
       />
     </form>
     <p className={styles.terms}>
