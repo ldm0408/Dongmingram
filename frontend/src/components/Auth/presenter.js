@@ -5,7 +5,6 @@ import LoginForm from "components/LoginForm";
 import SignupForm from "components/SignupForm";
 
 const Auth = (props, context) => {
-  console.log(props);
   return (
     <main className={styles.auth}>
       <div className={styles.column}>
