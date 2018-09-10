@@ -28,6 +28,7 @@
         .list-item {
           margin-right: 15px;
           color: $dark-blue;
+          text-transform: uppercase;
           cursor: pointer;
           @include breakpoint("phone-tablet") {
             margin-bottom: 10px;
