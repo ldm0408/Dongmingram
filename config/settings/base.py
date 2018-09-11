@@ -63,17 +63,17 @@ DJANGO_APPS = [
     'django.contrib.admin',
 ]
 THIRD_PARTY_APPS = [
-    'allauth', # registation
-    'allauth.account', # registration
-    'allauth.socialaccount', # registration
+    'allauth',  # registation
+    'allauth.account',  # registration
+    'allauth.socialaccount',  # registration
     'allauth.socialaccount.providers.facebook',
-    'rest_framework', #REST framework
+    'rest_framework',  # REST framework
     'rest_framework.authtoken',
-    'taggit', # Tags for the photos
+    'taggit',  # Tags for the photos
     'taggit_serializer',
     'rest_auth',
     'rest_auth.registration',
-    'corsheaders', # To accept requests from React
+    'corsheaders',  # To accept requests from React
 ]
 LOCAL_APPS = [
     'dongmingram.users.apps.UsersConfig',
@@ -258,6 +258,10 @@ REST_FRAMEWORK = {
 
 REST_USE_JWT = True
 
-ACCOUNT_LOGOUT_ON_GET = True ## Get 으로 로그아웃을 사용하기 위한 코드
+ACCOUNT_LOGOUT_ON_GET = True  # Get 으로 로그아웃을 사용하기 위한 코드
 
-CORS_ORIGIN_ALLOW_ALL = True 
+CORS_ORIGIN_ALLOW_ALL = True
+
+JWT_AUTH = {
+    "JWT_VERIFY_EXPIRATION": False
+}

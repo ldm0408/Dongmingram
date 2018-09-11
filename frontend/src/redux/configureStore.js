@@ -3,7 +3,7 @@ import { connectRouter, routerMiddleware } from "connected-react-router";
 import createHistory from "history/createBrowserHistory"; // 해쉬 히스토리도 있고, 히스토리의 종류 다양한듯
 import thunk from "redux-thunk"; //리액트앱과 스토어 사이를 연결해준다,리덕스 스토어로 액션을 보낼수있다
 import { composeWithDevTools } from "redux-devtools-extension"; //dev tool
-import Reactotron from "ReactotronConfig"; // dev tool
+// import Reactotron from "ReactotronConfig"; // dev tool
 import { i18nState } from "redux-i18n"; // 언어 설정, 개발중인 App과 redux store의 현재 언어를 연결
 import user from "redux/modules/user";
 
@@ -27,7 +27,7 @@ let store;
 
 if (env === "development") {
   store = initialState =>
-    Reactotron.createStore(
+    createStore(
       connectRouter(history)(reducer),
       composeWithDevTools(applyMiddleware(...middlewares))
     );
