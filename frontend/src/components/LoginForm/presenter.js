@@ -1,13 +1,13 @@
 import React from "react";
 import PropTypes from "prop-types";
-import Ionicon from "react-ionicons";
-import styles from "shared/formStyles.scss";
+import FacebookLogin from "react-facebook-login";
+import FormStyles from "shared/formStyles.scss";
 
 const LoginForm = (props, context) => (
-  <div className={styles.formComponent}>
-    <form className={styles.form} onSubmit={props.handleSubmit}>
+  <div className={FormStyles.formComponent}>
+    <form className={FormStyles.form} onSubmit={props.handleSubmit}>
       <input
-        className={styles.textInput}
+        className={FormStyles.textInput}
         type="text"
         placeholder={context.t("Username")}
         value={props.usernameValue}
@@ -15,7 +15,7 @@ const LoginForm = (props, context) => (
         onChange={props.handleInputChange}
       />
       <input
-        className={styles.textInput}
+        className={FormStyles.textInput}
         type="password"
         placeholder={context.t("Password")}
         value={props.passwordValue}
@@ -23,25 +23,33 @@ const LoginForm = (props, context) => (
         onChange={props.handleInputChange}
       />
       <input
-        className={styles.button}
+        className={FormStyles.button}
         value={context.t("Log In")}
         type="submit"
       />
     </form>
-    <span className={styles.divider}>{context.t("or")}</span>
-    <span className={styles.facebookLink}>
-      <Ionicon icon="logo-facebook" fontSize="20px" color="#385185" />
-      {context.t("Log in with Facebook")}
+    <span className={FormStyles.divider}>{context.t("or")}</span>
+    <FacebookLogin
+      appId="284943952292490"
+      autoLoad={false}
+      fields="name,email,picture"
+      cssClass={FormStyles.facebookLink}
+      icon="fa-facebook-official"
+      textButton={context.t("Log in with Facebook")}
+      callback={props.handleFacebookLogin}
+    />
+    <span className={FormStyles.forgotLink}>
+      {context.t("Forgot Password?")}
     </span>
-    <span className={styles.forgotLink}>{context.t("Forgot Password?")}</span>
   </div>
 );
 
-LoginForm.propTyles = {
+LoginForm.propTypes = {
   usernameValue: PropTypes.string.isRequired,
   passwordValue: PropTypes.string.isRequired,
-  handleValue: PropTypes.func.isRequired,
-  handleSubmit: PropTypes.func.isRequired
+  handleInputChange: PropTypes.func.isRequired,
+  handleSubmit: PropTypes.func.isRequired,
+  handleFacebookLogin: PropTypes.func.isRequired
 };
 
 LoginForm.contextTypes = {
