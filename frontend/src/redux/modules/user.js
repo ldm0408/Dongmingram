@@ -36,7 +36,7 @@ function facebookLogin(access_token) {
 
 function usernameLogin(username, password) {
   return dispatch => {
-    // django-rest-auth 의 login API 이다. / https://django-rest-auth.readthedocs.io/en/latest/api_endpoints.html 참고
+    // django-rest-auth 의 login API
     fetch("/rest-auth/login/", {
       method: "POST",
       headers: {
@@ -54,6 +54,30 @@ function usernameLogin(username, password) {
         }
       })
       .catch(err => console.log(err));
+  };
+}
+
+function createAccount(username, password, email, name) {
+  return dispatch => {
+    fetch("/rest-auth/registration/", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({
+        username,
+        password1: password,
+        password2: password,
+        email,
+        name
+      })
+    })
+      .then(response => response.json())
+      .then(json => {
+        if (json.token) {
+          dispatch(saveToken(json.token));
+        }
+      });
   };
 }
 
@@ -87,7 +111,8 @@ function applySetToken(state, action) {
 // Exports
 const actionCreators = {
   facebookLogin,
-  usernameLogin
+  usernameLogin,
+  createAccount
 };
 export { actionCreators };
 
