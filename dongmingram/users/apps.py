@@ -2,7 +2,7 @@ from django.apps import AppConfig
 
 
 class UsersConfig(AppConfig):
-    name = "dongmingram.users"
+    name = 'dongmingram.users'
     verbose_name = "Users"
 
     def ready(self):
@@ -10,7 +10,5 @@ class UsersConfig(AppConfig):
             Users system checks
             Users signal registration
         """
-        try:
-            import users.signals  # noqa F401
-        except ImportError:
-            pass
+
+        from .signals import user_signed_up

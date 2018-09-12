@@ -14,10 +14,10 @@ urlpatterns = [
     # User management
     path('rest-auth/', include('rest_auth.urls')),
     path('rest-auth/registration/', include('rest_auth.registration.urls')),
-    path("users/",include("dongmingram.users.urls", namespace="users")),
+    path("users/", include("dongmingram.users.urls", namespace="users")),
     path("accounts/", include("allauth.urls")),
-    path("images/", include("dongmingram.images.urls", namespace= "images")),
-    path("notifications/", include("dongmingram.notifications.urls", namespace= "notifications")),
+    path("images/", include("dongmingram.images.urls", namespace="images")),
+    path("notifications/", include("dongmingram.notifications.urls", namespace="notifications")),
     re_path(r'^.*$', view=views.ReactAppView.as_view()),
     # Your stuff: custom urls includes go here
 ] + static(
