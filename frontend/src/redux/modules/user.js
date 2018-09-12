@@ -13,7 +13,7 @@ function saveToken(token) {
 
 // API Actions
 function facebookLogin(access_token) {
-  return d => {
+  return dispatch => {
     fetch("/users/login/facebook/", {
       method: "POST",
       headers: {
@@ -27,7 +27,30 @@ function facebookLogin(access_token) {
       .then(json => {
         if (json.token) {
           localStorage.setItem("jwt", json.token);
-          d(saveToken(json.token));
+          dispatch(saveToken(json.token));
+        }
+      })
+      .catch(err => console.log(err));
+  };
+}
+
+function usernameLogin(username, password) {
+  return dispatch => {
+    // django-rest-auth 의 login API 이다. / https://django-rest-auth.readthedocs.io/en/latest/api_endpoints.html 참고
+    fetch("/rest-auth/login/", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({
+        username,
+        password
+      })
+    })
+      .then(response => response.json())
+      .then(json => {
+        if (json.token) {
+          dispatch(saveToken(json.token));
         }
       })
       .catch(err => console.log(err));
@@ -53,6 +76,7 @@ function reducer(state = initialState, action) {
 // Reducer Functions
 function applySetToken(state, action) {
   const { token } = action;
+  localStorage.setItem("jwt", token);
   return {
     ...state,
     isLoggedIn: true,
@@ -62,7 +86,8 @@ function applySetToken(state, action) {
 
 // Exports
 const actionCreators = {
-  facebookLogin
+  facebookLogin,
+  usernameLogin
 };
 export { actionCreators };
 
