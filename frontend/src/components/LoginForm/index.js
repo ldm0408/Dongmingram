@@ -2,6 +2,7 @@ import { connect } from "react-redux";
 import Container from "./container";
 import { actionCreators as userAactions } from "redux/modules/user";
 
+console.log(connect);
 const mapDispatchToProps = (dispatch, ownProps) => {
   return {
     facebookLogin: access_token => {

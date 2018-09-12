@@ -16,8 +16,8 @@ App.propTypes = {
 
 const PrivateRoutes = props => (
   <Switch>
-    <Route exact path="/" render={() => "feed"} />
-    <Route exact path="/explore" render={() => "explore"} />
+    <Route key={1} exact path="/" render={() => "feed"} />
+    <Route key={2} exact path="/explore" render={() => "explore"} />
   </Switch>
 );
 
