@@ -83,7 +83,8 @@ function createAccount(username, password, email, name) {
 
 // Initial State
 const initialState = {
-  isLoggedIn: localStorage.getItem("jwt") ? true : false
+  isLoggedIn: localStorage.getItem("jwt") ? true : false,
+  token: localStorage.getItem("jwt")
 };
 
 // Reducer
