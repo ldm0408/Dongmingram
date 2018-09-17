@@ -1,5 +1,5 @@
 // Imports
-
+import { actionCreators as userAction } from "redux/modules/user";
 // Actions
 
 // Action Creators
@@ -8,14 +8,19 @@
 
 function getFeed() {
   return (dispatch, getState) => {
-    console.log(getState());
     const {
       user: { token }
     } = getState();
     fetch("/images/", {
       headers: { Authorization: `JWT ${token}` }
     })
-      .then(response => response.json())
+      .then(response => {
+        if (response.status === 401) {
+          console.log("LOGOUUTTT");
+          dispatch(userAction.logout());
+        }
+        return response.json();
+      })
       .then(json => console.log(json));
   };
 }

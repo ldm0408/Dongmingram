@@ -8,7 +8,6 @@ import Navigation from "components/Navigation";
 import Feed from "components/Feed";
 
 const App = props => {
-  console.log(props);
   return [
     props.isLoggedIn ? <Navigation key={1} /> : null,
     props.isLoggedIn ? <PrivateRoutes key={2} /> : <PublicRoutes key={2} />,
