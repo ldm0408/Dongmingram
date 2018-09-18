@@ -1,0 +1,22 @@
+.comment-box {
+  border-top: 1px solid $light-grey;
+  padding: 15px 0;
+  @include breakpoint("phone") {
+    display: none;
+  }
+  .input {
+    border: 0;
+    height: 20px;
+    resize: none;
+    width: 100%;
+    font-size: $normal-font-size;
+    overflow-y: scroll;
+    max-height: 80px;
+    &:focus {
+      outline: none;
+    }
+    &::placeholder {
+      color: $middle-grey;
+    }
+  }
+}

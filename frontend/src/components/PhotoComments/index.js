@@ -4,8 +4,8 @@ import styles from "./styels.scss";
 
 const PhotoComments = props => {
   return (
-    <div>
-      <ul>
+    <div className={styles.comments}>
+      <ul className={styles.list}>
         <Comment username={props.creator} comment={props.caption} />
         {props.comments.map(comment => (
           <Comment
@@ -21,10 +21,10 @@ const PhotoComments = props => {
 
 const Comment = props => {
   return (
-    <div>
-      <span>{props.username}</span>
-      <span>{props.comment}</span>
-    </div>
+    <li className={styles.comment}>
+      <span className={styles.username}>{props.username}</span>{" "}
+      <span className={styles.message}>{props.comment}</span>
+    </li>
   );
 };
 

@@ -2,7 +2,9 @@ import React from "react";
 import styles from "./styles.scss";
 import Proptypes from "prop-types";
 
-const TimeStamp = (props, context) => <span>{props.time}</span>;
+const TimeStamp = (props, context) => (
+  <span className={styles.time}>{props.time}</span>
+);
 
 TimeStamp.propTypes = {
   time: Proptypes.string.isRequired
