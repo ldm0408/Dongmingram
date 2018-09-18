@@ -11,6 +11,8 @@ class SmallImageSerializer(serializers.ModelSerializer):
         fields = (
             'file',
         )
+
+
 class CountImageSerializer(serializers.ModelSerializer):
 
     class Meta:
@@ -32,9 +34,10 @@ class FeedUserSerializer(serializers.ModelSerializer):
             'profile_image'
         )
 
+
 class CommentSerializer(serializers.ModelSerializer):
 
-    creator = FeedUserSerializer(read_only = True)
+    creator = FeedUserSerializer(read_only=True)
 
     class Meta:
         model = models.Comment
@@ -50,11 +53,11 @@ class LikeSerializer(serializers.ModelSerializer):
     class Meta:
         model = models.Like
         fields = '__all__'
-        
+
 
 class ImageSerializer(TaggitSerializer, serializers.ModelSerializer):
 
-    comments = CommentSerializer(many = True)
+    comments = CommentSerializer(many=True)
     creator = FeedUserSerializer()
     tags = TagListSerializerField()
 
@@ -69,9 +72,10 @@ class ImageSerializer(TaggitSerializer, serializers.ModelSerializer):
             'like_counter',
             'comment_counter',
             'creator',
-            'created_at',
+            'natural_time',
             'tags'
         )
+
 
 class InputImageSerializer(serializers.ModelSerializer):
 

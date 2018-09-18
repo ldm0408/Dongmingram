@@ -1,9 +1,9 @@
 import React, { Component } from "react";
-import PhotoActions from "./presenter";
+import CommentBox from "./presenter";
 
 class Container extends Component {
   render() {
-    return <PhotoActions {...this.props} />;
+    return <CommentBox />;
   }
 }
 

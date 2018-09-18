@@ -1,6 +1,7 @@
 from django.db import models
 from dongmingram.users import models as user_models
 from taggit.managers import TaggableManager
+from django.contrib.humanize.templatetags.humanize import naturaltime
 
 
 # Create your models here.
@@ -27,8 +28,13 @@ class Image(TimeStampedModel):
     def like_counter(self):
         return self.likes.all().count()
 
+    @property
     def comment_counter(self):
         return self.comments.all().count()
+
+    @property
+    def natural_time(self):
+        return naturaltime(self.created_at)
 
     def __str__(self):
         return '{} - {}'.format(self.location, self.caption)

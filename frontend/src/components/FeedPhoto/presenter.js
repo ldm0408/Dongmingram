@@ -1,9 +1,10 @@
-// 이 컴포넌트는 Feed 외에 다른 컴포넌트에도 재 사용 될 예정이기에 따로 생성 함
-
 import React from "react";
 import PropTypes from "prop-types";
 import styles from "./styles.scss";
 import PhotoActions from "components/PhotoActions";
+import PhotoComments from "components/PhotoComments";
+import TimeStamp from "components/TimeStamp";
+import CommentBox from "../CommentBox/presenter";
 
 const FeedPhoto = (props, context) => {
   console.log(props);
@@ -20,6 +21,13 @@ const FeedPhoto = (props, context) => {
       <img src={props.file} alt={props.caption} />
       <div>
         <PhotoActions number={props.like_counter} />
+        <PhotoComments
+          caption={props.caption}
+          creator={props.creator.username}
+          comments={props.comments}
+        />
+        <TimeStamp time={props.natural_time} />
+        <CommentBox />
       </div>
     </div>
   );
@@ -36,13 +44,14 @@ FeedPhoto.propTypes = {
   caption: PropTypes.string.isRequired,
   comments: PropTypes.arrayOf(
     PropTypes.shape({
-      massage: PropTypes.string,
+      message: PropTypes.string,
       creator: PropTypes.shape({
         profile_image: PropTypes.string,
         username: PropTypes.string.isRequired
       }).isRequired
     })
-  ).isRequired
+  ).isRequired,
+  natural_time: PropTypes.string.isRequired
 };
 
 export default FeedPhoto;
