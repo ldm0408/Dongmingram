@@ -4,7 +4,7 @@ import Loading from "components/Loading";
 import styles from "./styles.scss";
 import FeedPhoto from "../FeedPhoto/presenter";
 
-const Feed = (props, context) => {
+const Feed = props => {
   if (props.loading) {
     return (
       <div className={styles.feed}>
