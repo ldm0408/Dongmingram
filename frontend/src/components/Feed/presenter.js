@@ -10,11 +10,20 @@ const Feed = (props, context) => {
         <Loading />
       </div>
     );
+  } else if (props.feed) {
+    return <RenderFeed {...props} />;
   }
 };
 
+const RenderFeed = props => {
+  return (
+    <div className={styles.feed}>{props.feed.map(photo => photo.caption)} </div>
+  );
+};
+
 Feed.propTypes = {
-  loading: PropTypes.bool.isRequired
+  loading: PropTypes.bool.isRequired,
+  feed: PropTypes.array
 };
 
 export default Feed;

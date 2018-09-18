@@ -1,9 +1,14 @@
 // Imports
 import { actionCreators as userAction } from "redux/modules/user";
 // Actions
-
+const SET_FEED = "SET_FEED";
 // Action Creators
-
+function setFeed(feed) {
+  return {
+    type: SET_FEED,
+    feed
+  };
+}
 // API Actions
 
 function getFeed() {
@@ -16,12 +21,11 @@ function getFeed() {
     })
       .then(response => {
         if (response.status === 401) {
-          console.log("LOGOUUTTT");
           dispatch(userAction.logout());
         }
         return response.json();
       })
-      .then(json => console.log(json));
+      .then(json => dispatch(setFeed(json)));
   };
 }
 
@@ -32,12 +36,21 @@ const initialState = {};
 
 function reducer(state = initialState, action) {
   switch (action.type) {
+    case SET_FEED:
+      return applySetfeed(state, action);
     default:
       return state;
   }
 }
 
 // Reducer Functions
+function applySetfeed(state, action) {
+  const { feed } = action;
+  return {
+    ...state,
+    feed
+  };
+}
 
 // Exports
 const actionCreators = { getFeed };
