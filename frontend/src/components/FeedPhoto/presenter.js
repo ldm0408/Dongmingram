@@ -7,7 +7,6 @@ import TimeStamp from "components/TimeStamp";
 import CommentBox from "../CommentBox/presenter";
 
 const FeedPhoto = (props, context) => {
-  console.log(props);
   return (
     <div className={styles.feedPhoto}>
       <header className={styles.header}>
@@ -23,7 +22,11 @@ const FeedPhoto = (props, context) => {
       </header>
       <img src={props.file} alt={props.caption} />
       <div className={styles.meta}>
-        <PhotoActions number={props.like_counter} />
+        <PhotoActions
+          number={props.like_counter}
+          is_liked={props.is_liked}
+          photoId={props.id}
+        />
         <PhotoComments
           caption={props.caption}
           creator={props.creator.username}
@@ -54,7 +57,8 @@ FeedPhoto.propTypes = {
       }).isRequired
     })
   ).isRequired,
-  natural_time: PropTypes.string.isRequired
+  natural_time: PropTypes.string.isRequired,
+  is_liked: PropTypes.bool.isRequired
 };
 
 export default FeedPhoto;
