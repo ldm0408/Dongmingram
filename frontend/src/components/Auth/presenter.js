@@ -15,7 +15,9 @@ const Auth = (props, context) => {
       </div>
       <div className={styles.column}>
         <div className={`${styles.whiteBox} ${styles.formBox}`}>
-          <img src={require("images/logo.png")} alt="logo" />
+          <div className={styles.logo}>
+            <img src={require("images/logo.png")} alt="logo" />
+          </div>
           {props.action === "login" && <LoginForm />}
           {props.action === "signup" && <SignupForm />}
         </div>
