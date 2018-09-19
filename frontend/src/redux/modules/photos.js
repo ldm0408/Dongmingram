@@ -48,7 +48,7 @@ function getFeed() {
 
 function likePhoto(photoId) {
   return (dispatch, getState) => {
-    dispatch(doLikePhoto(photoId));
+    dispatch(doLikePhoto(photoId)); // state 변경 및 뷰 변화 먼저 반영 후 API 요청--> Optimistic Update
     const {
       user: { token }
     } = getState();
@@ -61,14 +61,14 @@ function likePhoto(photoId) {
       if (response.status === 401) {
         dispatch(userAction.logout());
       } else if (!response.ok) {
-        dispatch(doUnLikePhoto(photoId));
+        dispatch(doUnLikePhoto(photoId)); // API 요청 실패 시 상태를 원래대로 돌려 놓는다
       }
     });
   };
 }
 function unLikePhoto(photoId) {
   return (dispatch, getState) => {
-    dispatch(doUnLikePhoto(photoId));
+    dispatch(doUnLikePhoto(photoId)); // state 변경 및 뷰 변화 먼저 반영 후 API 요청--> Optimistic Update
     const {
       user: { token }
     } = getState();
@@ -81,7 +81,7 @@ function unLikePhoto(photoId) {
       if (response.status === 401) {
         dispatch(userAction.logout());
       } else if (!response.ok) {
-        dispatch(doLikePhoto(photoId));
+        dispatch(doLikePhoto(photoId)); // API 요청 실패 시 상태를 원래대로 돌려 놓는다
       }
     });
   };
