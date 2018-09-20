@@ -128,7 +128,6 @@ function applyLikePhoto(state, action) {
 
 function applyUnLikePhoto(state, action) {
   const { feed } = state;
-  console.log(feed);
   const { photoId } = action;
   const updatedPhoto = feed.map(photo => {
     if (photo.id === photoId) {
