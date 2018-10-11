@@ -2,7 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import Loading from "components/Loading";
 import styles from "./styles.scss";
-import FeedPhoto from "../FeedPhoto/presenter";
+import FeedPhoto from "components/FeedPhoto";
 
 const Feed = props => {
   if (props.loading) {
