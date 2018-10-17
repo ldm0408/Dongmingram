@@ -136,11 +136,42 @@ function getPhotoLikes(photoId) {
 function followUser(userId) {
   return (dispatch, getState) => {
     dispatch(setFollowUser(userId));
+    const {
+      user: { token }
+    } = getState();
+    fetch(`/users/${userId}/follow/`, {
+      method: "POST",
+      headers: {
+        Authorization: `JWT ${token}`
+      }
+    }).then(response => {
+      if (response.status === 401) {
+        dispatch(logout());
+      } else if (!response.ok) {
+        dispatch(setUnfollowUser(userId)); // API 요청 실패 시 상태를 원래대로 돌려 놓는다
+      }
+    });
   };
 }
 function UnfollowUser(userId) {
   return (dispatch, getState) => {
     dispatch(setUnfollowUser(userId));
+    const {
+      user: { token }
+    } = getState();
+    fetch(`/users/${userId}/unfollow/`, {
+      method: "POST",
+      headers: {
+        Authorization: `JWT ${token}`
+      }
+    }).then(response => {
+      console.log(response);
+      if (response.status === 401) {
+        dispatch(logout());
+      } else if (!response.ok) {
+        dispatch(setFollowUser(userId)); // API 요청 실패 시 상태를 원래대로 돌려 놓는다
+      }
+    });
   };
 }
 
