@@ -12,13 +12,14 @@ const UserRow = (props, context) => (
       />
       <div className={styles.user}>
         <span className={styles.username}>{props.user.username}</span>
-        {/* <span className={styles.name}>{props.user.name}</span> */}
       </div>
     </div>
     <span className={styles.column}>
-      <button className={styles.button} onClick={props.handleClick}>
-        {props.user.following ? context.t("Unfollow") : context.t("Follow")}
-      </button>
+      {localStorage.getItem("username") !== props.user.username ? (
+        <button className={styles.button} onClick={props.handleClick}>
+          {props.user.following ? context.t("Unfollow") : context.t("Follow")}
+        </button>
+      ) : null}
     </span>
   </div>
 );

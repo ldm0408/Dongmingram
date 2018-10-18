@@ -8,10 +8,11 @@ const FOLLOW_USER = "FOLLOW_USER";
 const UNFOLLOW_USER = "UNFOLLOW_USER";
 
 // Action Creators
-function saveToken(token) {
+function saveToken(json) {
   return {
     type: SAVE_TOKEN,
-    token
+    token: json.token,
+    username: json.user.username
   };
 }
 
@@ -55,9 +56,10 @@ function facebookLogin(access_token) {
     })
       .then(response => response.json())
       .then(json => {
+        console.log(json);
+
         if (json.token) {
-          localStorage.setItem("jwt", json.token);
-          dispatch(saveToken(json.token));
+          dispatch(saveToken(json));
         }
       })
       .catch(err => console.log(err));
@@ -79,8 +81,9 @@ function usernameLogin(username, password) {
     })
       .then(response => response.json())
       .then(json => {
+        console.log(json);
         if (json.token) {
-          dispatch(saveToken(json.token));
+          dispatch(saveToken(json));
         }
       })
       .catch(err => console.log(err));
@@ -165,13 +168,35 @@ function UnfollowUser(userId) {
         Authorization: `JWT ${token}`
       }
     }).then(response => {
-      console.log(response);
       if (response.status === 401) {
         dispatch(logout());
       } else if (!response.ok) {
         dispatch(setFollowUser(userId)); // API 요청 실패 시 상태를 원래대로 돌려 놓는다
       }
     });
+  };
+}
+
+function getExplore() {
+  return (dispatch, getState) => {
+    const {
+      user: { token }
+    } = getState();
+    fetch(`/users/explore/`, {
+      method: "GET",
+      headers: {
+        Authorization: `JWT ${token}`
+      }
+    })
+      .then(response => {
+        if (response.status === 401) {
+          dispatch(logout());
+        }
+        return response.json();
+      })
+      .then(json => {
+        dispatch(setUserList(json));
+      });
   };
 }
 
@@ -202,13 +227,12 @@ function reducer(state = initialState, action) {
 
 // Reducer Functions
 function applySetToken(state, action) {
+  console.log(action);
   const { token } = action;
+  const { username } = action;
   localStorage.setItem("jwt", token);
-  return {
-    ...state,
-    isLoggedIn: true,
-    token
-  };
+  localStorage.setItem("username", username);
+  return { ...state, isLoggedIn: true, token };
 }
 
 function applyLogout(state, actioin) {
@@ -257,7 +281,8 @@ const actionCreators = {
   logout,
   getPhotoLikes,
   followUser,
-  UnfollowUser
+  UnfollowUser,
+  getExplore
 };
 export { actionCreators };
 
