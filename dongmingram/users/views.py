@@ -29,7 +29,7 @@ class FollowUser(APIView):
         except model.User.DoesNotExist:
             return Response(status=status.HTTP_404_NOT_FOUND)
 
-        user.followers.add(user_to_follow)
+        user.following.add(user_to_follow)
         user.save()
         notifications_view.Notification(user, user_to_follow, 'follow')
         return Response(status=status.HTTP_200_OK)
@@ -46,7 +46,7 @@ class UnFollowUser(APIView):
         except model.User.DoesNotExist:
             return Response(status=status.HTTP_404_NOT_FOUND)
 
-        user.followers.remove(user_to_follow)
+        user.following.remove(user_to_follow)
         user.save()
 
         return Response(status=status.HTTP_200_OK)

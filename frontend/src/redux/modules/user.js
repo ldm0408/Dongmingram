@@ -156,7 +156,7 @@ function followUser(userId) {
     });
   };
 }
-function UnfollowUser(userId) {
+function unfollowUser(userId) {
   return (dispatch, getState) => {
     dispatch(setUnfollowUser(userId));
     const {
@@ -281,7 +281,7 @@ const actionCreators = {
   logout,
   getPhotoLikes,
   followUser,
-  UnfollowUser,
+  unfollowUser,
   getExplore
 };
 export { actionCreators };
